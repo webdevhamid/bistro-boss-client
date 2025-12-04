@@ -1,7 +1,9 @@
+import CallUs from "../../components/CallUs/CallUs";
+import FeaturedTitle from "../../components/FeaturedTitle/FeaturedTitle";
 import FoodCategory from "../../components/FoodCategory/FoodCategory";
 import Hero from "../../components/Hero/Hero";
 import PopularMenu from "../../components/PopularMenu/PopularMenu";
-import SectionBg from "../../components/SectionBg/SectionBg";
+import RecommendedMenu from "../../components/RecommendedMenu/RecommendedMenu";
 
 const Home = () => {
   return (
@@ -10,10 +12,14 @@ const Home = () => {
       <Hero />
       {/* Food Category */}
       <FoodCategory />
-      {/* Section background */}
-      <SectionBg />
+      {/* Featured Title */}
+      <FeaturedTitle />
       {/* Popular Menu */}
       <PopularMenu />
+      {/* Call Us */}
+      <CallUs />
+      {/* Recommend Menu */}
+      <RecommendedMenu />
     </div>
   );
 };

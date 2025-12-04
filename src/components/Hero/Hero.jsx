@@ -16,7 +16,7 @@ import "./Hero.css";
 
 const Hero = () => {
   return (
-    <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen h-[750px]">
+    <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen h-[850px]">
       <Swiper
         modules={[Pagination]}
         pagination={{

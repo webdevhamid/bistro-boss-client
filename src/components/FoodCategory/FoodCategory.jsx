@@ -20,9 +20,9 @@ import { Pagination } from "swiper/modules";
 
 const FoodCategory = () => {
   return (
-    <div className="py-20">
+    <div className="pb-20 pt-10">
       {/* Section Title */}
-      <SectionTitle heading={`Our Menu`} subHeading={`---From 11:00am to 10:00pm---`} />
+      <SectionTitle heading={`Our Menu`} subHeading={`From 11:00am to 10:00pm`} />
       <Swiper
         slidesPerView={4}
         spaceBetween={30}

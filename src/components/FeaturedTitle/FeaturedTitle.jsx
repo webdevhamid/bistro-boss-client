@@ -1,4 +1,4 @@
-const SectionBg = () => {
+const FeaturedTitle = () => {
   return (
     <div className="pt-10 pb-20">
       <div className="bg-[url(../src/assets/home/chef-service.jpg)] bg-cover bg-center bg-fixed text-white p-20 text-center space-y-4">
@@ -15,4 +15,4 @@ const SectionBg = () => {
   );
 };
 
-export default SectionBg;
+export default FeaturedTitle;
