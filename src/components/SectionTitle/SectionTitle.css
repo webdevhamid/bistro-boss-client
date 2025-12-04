@@ -4,3 +4,10 @@
     height: calc(0.25rem * 1);
   }
 }
+
+.featured-menu .divider {
+  &:before,
+  &:after {
+   background-color: white;
+  }
+}
