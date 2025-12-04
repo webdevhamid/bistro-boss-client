@@ -41,8 +41,8 @@ const PopularMenu = () => {
       {/* View Full menu button */}
       <div className="flex justify-center mt-8">
         <button className="btn btn-outline bg-transparent hover:border-amber-500 hover:text-amber-500">
-        View Full Menu
-      </button>
+          View Full Menu
+        </button>
       </div>
     </section>
   );

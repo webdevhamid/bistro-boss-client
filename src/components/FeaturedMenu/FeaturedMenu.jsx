@@ -31,7 +31,7 @@ const FeaturedMenu = () => {
               Dignissimos reprehenderit corporis dicta sint minus eos.
             </p>
             <div>
-              <button className="btn btn-outline bg-amber-50 px-8 border-b-2 border-amber-500 text-black border-0 uppercase hover:bg-black hover:text-white hover:border-b-transparent mt-5">
+              <button className="btn btn-outline bg-transparent text-white px-8 border-b-4 rounded-md border-white border-0 uppercase hover:bg-black hover:text-white hover:border-b-transparent mt-5">
                 Read More
               </button>
             </div>

@@ -24,13 +24,23 @@ const FoodCategory = () => {
       {/* Section Title */}
       <SectionTitle heading={`Our Menu`} subHeading={`From 11:00am to 10:00pm`} />
       <Swiper
-        slidesPerView={4}
+        slidesPerView={1}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        }}
         spaceBetween={30}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper text-white"
+        className="mySwiper text-white food-category-slide"
       >
         <SwiperSlide>
           <img src={slide1} />

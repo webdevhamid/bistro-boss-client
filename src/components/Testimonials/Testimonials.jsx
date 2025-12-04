@@ -47,8 +47,10 @@ const Testimonials = () => {
                   <div className="mask mask-star bg-orange-400" aria-label="5 star"></div>
                 </div>
               </div>
+              {/* Quote Icon */}
               <FaQuoteLeft className="text-5xl mx-auto my-5" />
-              <p className="text-sm font-medium">{review?.details}</p>
+              {/* Review Details */}
+              <p className="text-sm font-medium px-3 md:w-4/5 md:mx-auto">{review?.details}</p>
               <p className="text-md text-amber-500 font-semibold mt-2 uppercase">{review?.name}</p>
             </div>
           </SwiperSlide>
