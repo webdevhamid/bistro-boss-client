@@ -1,4 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
+
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
+}
+
+/* Tailwind CSS Directive for custom font */
+@theme {
+  --font-section: "Cinzel", "sans-serif";
+  /* --font-theme: "Google Sans Flex", sans-serif; */
 }

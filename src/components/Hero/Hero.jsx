@@ -16,34 +16,37 @@ import "./Hero.css";
 
 const Hero = () => {
   return (
-    <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen md:h-screen min-h-full max-h-full hero-section">
-      <Swiper
-        modules={[Pagination]}
-        pagination={{
-          clickable: true,
-        }}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img src={img4} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={img1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={img2} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={img3} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={img5} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={img6} />
-        </SwiperSlide>
-      </Swiper>
-    </div>
+    <>
+      <title>Bistro Boss Restaurant | Home</title>
+      <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen md:h-screen min-h-full max-h-max hero-section">
+        <Swiper
+          modules={[Pagination]}
+          pagination={{
+            clickable: true,
+          }}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <img src={img4} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={img1} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={img2} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={img3} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={img5} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={img6} />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+    </>
   );
 };
 

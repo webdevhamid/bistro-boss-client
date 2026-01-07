@@ -1,11 +1,10 @@
-import React from 'react';
-
 const OurShop = () => {
-    return (
-        <div>
-            our shop
-        </div>
-    );
+  return (
+    <div>
+      <title>Bistro Boss Restaurant | Shop</title>
+      our shop
+    </div>
+  );
 };
 
 export default OurShop;

@@ -15,9 +15,9 @@ const Home = () => {
       {/* Food Category */}
       <FoodCategory />
       {/* Featured Title */}
-      <FeaturedTitle />
+      <FeaturedTitle heading={'Bistro Boss'}/>
       {/* Popular Menu */}
-      <PopularMenu />
+      <PopularMenu heading={'From our menu'} subHeading={'Check it out'} />
       {/* Call Us */}
       <CallUs />
       {/* Recommend Menu */}
