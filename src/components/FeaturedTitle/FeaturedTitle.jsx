@@ -1,10 +1,15 @@
-const FeaturedTitle = ({ heading, bgColor = "bg-white text-base-content" }) => {
+const FeaturedTitle = ({ heading, bgColor = "bg-white text-base-content", bgCover }) => {
   return (
     <div className="pt-10 pb-20">
-      <div className="bg-[url(../src/assets/home/chef-service.jpg)] bg-cover bg-no-repeat bg-center bg-fixed text-white p-10 md:p-20 text-center md:space-y-4 space-y-1">
+      <div
+        style={{
+          backgroundImage: `url(${bgCover})`,
+        }}
+        className={`bg-cover bg-no-repeat bg-center bg-fixed text-white p-10 md:p-20 text-center md:space-y-4 space-y-1`}
+      >
         <div className={`${bgColor} mx-auto  p-5 md:p-20`}>
           <h1 className="text-3xl md:text-5xl font-medium mb-3">{heading}</h1>
-          <p className="md:text-sm text-[12]">
+          <p className="md:text-sm text-[12px]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum incidunt, ipsam rem qui
             ullam quas reiciendis delectus assumenda laudantium consequatur molestias, quibusdam
             laboriosam quidem cupiditate et deserunt rerum

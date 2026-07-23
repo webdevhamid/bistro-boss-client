@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         Component: OurMenu,
       },
       {
-        path: "our-shop",
+        path: "our-shop/:category",
         Component: OurShop,
       },
     ],

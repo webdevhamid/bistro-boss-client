@@ -26,7 +26,7 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link to={"/our-shop"} className="hover:text-[#eea000] bg-transparent transition">
+        <Link to={"/our-shop/salads"} className="hover:text-[#eea000] bg-transparent transition">
           Our Shop
         </Link>
       </li>

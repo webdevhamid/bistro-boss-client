@@ -1,6 +1,7 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import SectionTitle from "../SectionTitle/SectionTitle";
+// import useMenu from "../../hooks/useMenu";
 
 // Import Swiper styles
 import "swiper/css";
@@ -19,6 +20,13 @@ import slide5 from "../../assets/home/slide5.jpg";
 import { Pagination } from "swiper/modules";
 
 const FoodCategory = () => {
+  // const [menu] = useMenu();
+  // console.log(menu);
+  // const uniqueMenu = menu.map((item) => {
+  //   return item.category;
+  // });
+  // console.log([...new Set(uniqueMenu)]);
+
   return (
     <div className="pb-20 pt-10">
       {/* Section Title */}

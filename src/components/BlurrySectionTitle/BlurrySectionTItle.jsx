@@ -2,7 +2,7 @@ const BlurrySectionTItle = ({ imgURL, title, desc }) => {
   return (
     <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen font-section">
       <div
-        className="hero min-h-[500px] bg-cover"
+        className="hero min-h-[500px] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url("${imgURL}")`,
         }}
