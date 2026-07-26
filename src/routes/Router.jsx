@@ -5,6 +5,9 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import OurMenu from "../pages/OurMenu/OurMenu";
 import OurShop from "../pages/OurShop/OurShop";
 import Contact from "../pages/ContactUs/Contact";
+import Login from "../pages/Login/Login";
+import AuthLayout from "../layouts/AuthLayout";
+import Register from "../pages/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,20 @@ const router = createBrowserRouter([
       {
         path: "our-shop/:category",
         Component: OurShop,
+      },
+    ],
+  },
+  {
+    path: "auth",
+    Component: AuthLayout,
+    children: [
+      {
+        path: "login",
+        Component: Login,
+      },
+      {
+        path: "register",
+        Component: Register,
       },
     ],
   },
