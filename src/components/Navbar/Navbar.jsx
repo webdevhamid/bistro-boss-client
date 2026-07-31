@@ -1,8 +1,13 @@
 import { Link } from "react-router";
 
 import logo from "../../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthContext";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+
   const menu = (
     <>
       <li>
@@ -32,6 +37,19 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  // Logout user handler
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => {
+        Swal.fire({
+          title: "Logout",
+          text: "User logged out successfully!",
+          icon: "success",
+        });
+      })
+      .error((err) => console.log(err));
+  };
   return (
     <nav className="bg-black/30 text-white shadow-sm z-10 fixed top-0 w-full left-0">
       <div className="navbar container mx-auto">
@@ -69,9 +87,15 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 font-bold text-lg uppercase">{menu}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/auth/login" className="btn">
-            Login
-          </Link>
+          {user ? (
+            <Link className="btn" onClick={handleLogout}>
+              Logout
+            </Link>
+          ) : (
+            <Link to="/auth/login" className="btn">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </nav>

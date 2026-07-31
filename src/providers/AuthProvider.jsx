@@ -9,6 +9,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 import { app } from "../firebase/firebase.config";
@@ -22,29 +23,40 @@ const AuthProvider = ({ children }) => {
   // External Providers
   const googleProvider = new GoogleAuthProvider();
 
+  // Sign with Google
   const handleGoogleSignIn = () => {
     return signInWithPopup(auth, googleProvider);
   };
-
+  // Verify email
   const verifyEmail = () => {
     return sendEmailVerification(user);
   };
-
+  // Create new user using email and password
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  // Update profile
+  const updateUserProfile = (userName) => {
+    return updateProfile(auth.currentUser, {
+      displayName: userName,
+    });
+  };
+
+  // Sign in user using email and password
   const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // Logout user
   const logoutUser = () => {
     setLoading(true);
     return signOut(auth);
   };
 
+  // Current User Observer
   useEffect(() => {
     // Register the observer
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -64,6 +76,7 @@ const AuthProvider = ({ children }) => {
 
   // console.log("Alternative way to get the current user", auth.currentUser);
 
+  // Context values that will be passed to the AuthContext
   const authInfo = {
     user,
     setUser,
@@ -74,6 +87,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signInUser,
     logoutUser,
+    updateUserProfile,
   };
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
