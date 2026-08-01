@@ -88,9 +88,12 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <Link className="btn" onClick={handleLogout}>
-              Logout
-            </Link>
+            <>
+              <span>{user?.displayName}</span>
+              <Link className="btn" onClick={handleLogout}>
+                Logout
+              </Link>
+            </>
           ) : (
             <Link to="/auth/login" className="btn">
               Login

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../providers/AuthContext";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
@@ -7,31 +7,45 @@ import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { handleGoogleSignIn, createUser, updateUserProfile } = useContext(AuthContext);
+  const { handleGoogleSignIn, createUser, updateUserProfile, logoutUser } = useContext(AuthContext);
   // Initial input type
   const [inputType, setInputType] = useState("password");
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
-      const { name, email, password } = data;
+      const { name, email, password, photoURL } = data;
       console.log(name, email, password);
 
       // Create a new user
       const { user } = await createUser(email, password);
 
       if (user !== null) {
-        updateUserProfile(name)
+        updateUserProfile(name, photoURL)
           .then(() => {
+            // Reset register form
+            reset();
+
+            // Display success message
             Swal.fire({
               title: "Success",
               text: "Account created successfully!",
               icon: "success",
             });
+
+            // logout user
+            logoutUser()
+              .then(() => {
+                // Redirect user to the home page
+                navigate("/auth/login", { replace: true });
+              })
+              .catch((err) => console.log(err));
           })
           .catch((err) => console.log(err));
       }
@@ -101,6 +115,20 @@ const Register = () => {
                   {/* Error message for validation*/}
                   {errors.name?.type === "required" && (
                     <span className="text-error font-semibold">{errors?.name?.message}</span>
+                  )}
+
+                  <label className="label">Photo URL</label>
+                  <input
+                    type="url"
+                    className="input"
+                    placeholder="Photo URL"
+                    {...register("photoURL", {
+                      required: "Photo URL is required",
+                    })}
+                  />
+                  {/* Error message for validation*/}
+                  {errors.photoURL?.type === "required" && (
+                    <span className="text-error font-semibold">{errors?.photoURL?.message}</span>
                   )}
 
                   <label className="label">Email</label>

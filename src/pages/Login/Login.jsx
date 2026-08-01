@@ -19,9 +19,9 @@ const Login = () => {
   // Initial input type
   const [inputType, setInputType] = useState("password");
   const navigate = useNavigate();
-
   const location = useLocation();
   console.log(location);
+
   const from = location.state?.pathname ? location.state?.pathname : "/";
 
   // Login handler
