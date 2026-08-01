@@ -12,6 +12,7 @@ import imgChef from "../../assets/home/chef-service.jpg";
 const Home = () => {
   const [menu] = useMenu();
   const offered = menu.filter((item) => item.category === "offered");
+
   return (
     <div>
       {/* Carousel */}
@@ -21,7 +22,12 @@ const Home = () => {
       {/* Featured Title */}
       <FeaturedTitle heading={"Bistro Boss"} bgCover={imgChef} />
       {/* Popular Menu */}
-      <MenuCategory heading={"From our menu"} subHeading={"Check it out"} items={offered} category={"offered"}/>
+      <MenuCategory
+        heading={"From our menu"}
+        subHeading={"Check it out"}
+        items={offered}
+        category={"offered"}
+      />
       {/* Call Us */}
       <CallUs />
       {/* Recommend Menu */}

@@ -8,6 +8,15 @@ import Contact from "../pages/ContactUs/Contact";
 import Login from "../pages/Login/Login";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+
+const DashboardRoute = () => {
+  return (
+    <PrivateRoute>
+      <Dashboard />
+    </PrivateRoute>
+  );
+};
 
 const router = createBrowserRouter([
   {
@@ -25,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        Component: Dashboard,
+        Component: DashboardRoute,
       },
       {
         path: "our-menu",

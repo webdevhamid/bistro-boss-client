@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from "react-simple-captcha";
 import { AuthContext } from "./../../providers/AuthContext";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
@@ -11,7 +11,6 @@ const Login = () => {
   const {
     handleSubmit,
     register,
-    // watch,
     formState: { errors },
   } = useForm();
   const [captchaText, setCaptchaText] = useState("");
@@ -19,6 +18,11 @@ const Login = () => {
   const { handleGoogleSignIn, signInUser } = useContext(AuthContext);
   // Initial input type
   const [inputType, setInputType] = useState("password");
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  console.log(location);
+  const from = location.state?.pathname ? location.state?.pathname : "/";
 
   // Login handler
   const onSubmit = async (data) => {
@@ -35,9 +39,13 @@ const Login = () => {
           text: "Logged in successfully!",
           icon: "success",
         });
+
+        // Navigate the user to the desired route
+        navigate(from, { replace: true });
       }
     } catch (err) {
       const errMessage = err.message;
+      console.log(err.code);
 
       Swal.fire({
         title: "Warning",
@@ -154,14 +162,8 @@ const Login = () => {
                   name="captcha"
                   className="input"
                   placeholder="Write the captcha text"
-                  {...register("captcha", { required: true })}
                   onChange={(e) => setCaptchaText(e.target.value)}
                 />
-                {/* Error message for captcha validation*/}
-                {errors.captcha && (
-                  <span className="text-error font-semibold">This field is required</span>
-                )}
-                {/* Error message for captcha validation*/}
 
                 {/* Submit button */}
                 <input
