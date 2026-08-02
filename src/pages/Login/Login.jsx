@@ -22,6 +22,8 @@ const Login = () => {
   const location = useLocation();
   console.log(location);
 
+  console.log("Login page state", location);
+
   const from = location.state?.pathname ? location.state?.pathname : "/";
 
   // Login handler

@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
 import Swal from "sweetalert2";
+import { FaCartPlus } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
@@ -33,6 +34,13 @@ const Navbar = () => {
       <li>
         <Link to={"/our-shop/salads"} className="hover:text-[#eea000] bg-transparent transition">
           Our Shop
+        </Link>
+      </li>
+      <li>
+        <Link className="indicator hover:text-[#eea000] bg-transparent transition" to="/cart">
+          <span className="indicator-item badge badge-secondary">100+</span>
+          <b>Cart</b>
+          <FaCartPlus />
         </Link>
       </li>
     </>
@@ -89,7 +97,7 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <span>{user?.displayName}</span>
+              {/* <span>{user?.displayName}</span> */}
               <Link className="btn" onClick={handleLogout}>
                 Logout
               </Link>

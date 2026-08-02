@@ -18,6 +18,7 @@ import slide5 from "../../assets/home/slide5.jpg";
 
 // import required modules
 import { Pagination } from "swiper/modules";
+import { Link } from "react-router";
 
 const FoodCategory = () => {
   // const [menu] = useMenu();
@@ -51,10 +52,12 @@ const FoodCategory = () => {
         className="mySwiper text-white food-category-slide"
       >
         <SwiperSlide>
-          <img src={slide1} />
-          <div className="absolute bottom-8 text-3xl font-semibold text-shadow-md uppercase">
-            <p>Salads</p>
-          </div>
+          <Link to="/our-shop/salads">
+            <img src={slide1} />
+            <div className="absolute bottom-8 text-3xl font-semibold text-shadow-md uppercase">
+              <p>Salads</p>
+            </div>
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide2} />

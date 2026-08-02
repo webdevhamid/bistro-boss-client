@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../providers/AuthContext";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
