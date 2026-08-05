@@ -20,9 +20,6 @@ const Login = () => {
   const [inputType, setInputType] = useState("password");
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
-
-  console.log("Login page state", location);
 
   const from = location.state?.pathname ? location.state?.pathname : "/";
 

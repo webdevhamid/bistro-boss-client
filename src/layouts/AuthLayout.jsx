@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../providers/AuthContext";
 
 const AuthLayout = () => {
@@ -10,7 +10,7 @@ const AuthLayout = () => {
   const from = location.state?.pathname ? location.state?.pathname : "/";
 
   if (user) {
-    return navigate(from, { replace: true });
+    return <Navigate to={from} replace />;
   }
 
   return (

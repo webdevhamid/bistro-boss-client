@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const DashboardRoute = () => {
   return (
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: "*",
+    Component: ErrorPage,
   },
 ]);
 

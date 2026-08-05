@@ -16,6 +16,7 @@ const Register = () => {
     formState: { errors },
     reset,
   } = useForm();
+  
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {

@@ -1,32 +1,17 @@
 import React from "react";
 import useAuth from "./../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useLocation, useNavigate } from "react-router";
-import axios from "axios";
+import { replace, useLocation, useNavigate } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-
-// category
-// :
-// "drinks"
-// image
-// :
-// name
-// :
-// "Haddock"
-// price
-// :
-// 14.7
-// recipe
-
-// _id
-// :
-// "642c155b2c4774f05c36eeb9"
+import { useQuery } from "@tanstack/react-query";
+import useCart from "../../hooks/useCart";
 
 const FoodCard = ({ item }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const axiosInstance = useAxiosSecure();
+  const [_, refetch] = useCart();
 
   const handleAddToCart = async (item) => {
     const { name: recipeName, recipe, image, price, _id: itemId } = item || {};
@@ -43,7 +28,9 @@ const FoodCard = ({ item }) => {
       };
 
       const { data } = await axiosInstance.post("/carts", cartItem);
+
       if (data.acknowledged) {
+        // Show the success Cart message
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -51,6 +38,9 @@ const FoodCard = ({ item }) => {
           showConfirmButton: false,
           timer: 1500,
         });
+
+        // Refetch the cart again to immediately update/display the cart counts
+        refetch();
       }
     } else {
       // If the user is not logged in
@@ -64,10 +54,9 @@ const FoodCard = ({ item }) => {
         confirmButtonText: "Yes, login!",
       }).then((result) => {
         // Redirect user to the login page
-        if (result.isConfirmed) navigate("/auth/login", { state: location });
+        if (result.isConfirmed) return navigate("/auth/login", { state: location });
       });
     }
-    console.log(item, user.email);
   };
 
   return (

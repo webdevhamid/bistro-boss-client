@@ -5,9 +5,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthContext";
 import Swal from "sweetalert2";
 import { FaCartPlus } from "react-icons/fa";
+import useCart from "../../hooks/useCart";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const menu = (
     <>
@@ -38,7 +40,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link className="indicator hover:text-[#eea000] bg-transparent transition" to="/cart">
-          <span className="indicator-item badge badge-secondary">100+</span>
+          <span className="indicator-item badge font-bold badge-sm badge-secondary">+{cart.length}</span>
           <b>Cart</b>
           <FaCartPlus />
         </Link>
