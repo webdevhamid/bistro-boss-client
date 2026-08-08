@@ -52,12 +52,10 @@ const FoodCategory = () => {
         className="mySwiper text-white food-category-slide"
       >
         <SwiperSlide>
-          <Link to="/our-shop/salads">
-            <img src={slide1} />
-            <div className="absolute bottom-8 text-3xl font-semibold text-shadow-md uppercase">
-              <p>Salads</p>
-            </div>
-          </Link>
+          <img src={slide1} />
+          <div className="absolute bottom-8 text-3xl font-semibold text-shadow-md uppercase">
+            <p>Salads</p>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide2} />

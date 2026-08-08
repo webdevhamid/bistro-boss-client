@@ -33,11 +33,7 @@ const Login = () => {
       const { user } = await signInUser(email, password);
       console.log(user);
       if (user !== null) {
-        Swal.fire({
-          title: "Success",
-          text: "Logged in successfully!",
-          icon: "success",
-        });
+        toast.success("Logged in successfully!");
 
         // Navigate the user to the desired route
         navigate(from, { replace: true });
@@ -159,7 +155,7 @@ const Login = () => {
                 <input
                   type="text"
                   name="captcha"
-                  className="input"
+                  className="input font-sans"
                   placeholder="Write the captcha text"
                   onChange={(e) => setCaptchaText(e.target.value)}
                 />

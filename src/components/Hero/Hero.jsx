@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <>
       <title>Bistro Boss Restaurant | Home</title>
-      <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen md:h-screen min-h-full max-h-max hero-section">
+      <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen md:h-[800px] max-h-max hero-section">
         <Swiper
           modules={[Pagination]}
           pagination={{

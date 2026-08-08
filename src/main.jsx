@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")).render(
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
         {/* React hot toast */}
-        <Toaster />
+        <Toaster position="bottom-right" reverseOrder={false} />
       </QueryClientProvider>
     </AuthProvider>
   </StrictMode>,

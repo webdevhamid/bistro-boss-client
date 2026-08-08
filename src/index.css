@@ -1,12 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+  themes:
+    light --default,
+    dark --prefersdark;
 }
 
 /* Tailwind CSS Directive for custom font */
 @theme {
-  --font-section: "Cinzel", "sans-serif";
-  /* --font-theme: "Google Sans Flex", sans-serif; */
+  --font-display: "Cinzel", sans-serif;
+  --color-secondary-500: #d1a054;
 }
+/* p {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+} */

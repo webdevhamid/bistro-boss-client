@@ -18,7 +18,7 @@ const AuthLayout = () => {
       <div className="container mx-auto">
         <Outlet />
       </div>
-    </div>
+    </div>         
   );
 };
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
@@ -6,6 +6,7 @@ import { AuthContext } from "../../providers/AuthContext";
 import Swal from "sweetalert2";
 import { FaCartPlus } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
@@ -14,36 +15,42 @@ const Navbar = () => {
   const menu = (
     <>
       <li>
-        <Link to={"/"} className="hover:text-[#eea000] bg-transparent transition">
+        <NavLink to={"/"} className={`hover:text-[#eea000] bg-transparent transition`}>
           Home
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to={"/contact-us"} className="hover:text-[#eea000] bg-transparent transition">
+        <NavLink to={"/contact-us"} className={`hover:text-[#eea000] bg-transparent transition`}>
           Contact Us
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to={"/dashboard"} className="hover:text-[#eea000] bg-transparent transition">
+        <NavLink to={"/dashboard"} className={`hover:text-[#eea000] bg-transparent transition`}>
           Dashboard
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to={"/our-menu"} className="hover:text-[#eea000] bg-transparent transition">
+        <NavLink to={"/our-menu"} className={`hover:text-[#eea000] bg-transparent transition`}>
           Our Menu
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to={"/our-shop/salads"} className="hover:text-[#eea000] bg-transparent transition">
+        <NavLink
+          to={"/our-shop/salads"}
+          className={`hover:text-[#eea000] bg-transparent transition`}
+        >
           Our Shop
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link className="indicator hover:text-[#eea000] bg-transparent transition" to="/cart">
-          <span className="indicator-item badge font-bold badge-sm badge-secondary">+{cart.length}</span>
+        <NavLink
+          className={`indicator hover:text-[#eea000] bg-transparent transition`}
+          to="/dashboard/cart"
+        >
+          <span className="indicator-item badge badge-sm badge-secondary">+{cart.length}</span>
           <b>Cart</b>
           <FaCartPlus />
-        </Link>
+        </NavLink>
       </li>
     </>
   );
@@ -84,17 +91,24 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow font-bold text-xl"
+              className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow font-bold text-xl main-navbar"
             >
               {menu}
             </ul>
           </div>
-          <Link tp="/" className="w-[60px]">
-            <img src={logo} alt="logo" />
+          <Link to="/" className="flex items-center justify-center gap-2 w-60">
+            <div className="w-7">
+              <img src={logo} alt="logo" className="w-full h-full" />
+            </div>
+            <div className="flex-1">
+              <p className="uppercase text-xl font-semibold font-display!">Bistro Boss</p>
+            </div>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 font-bold text-lg uppercase">{menu}</ul>
+          <ul className="menu menu-horizontal px-1 font-bold text-lg uppercase main-navbar">
+            {menu}
+          </ul>
         </div>
         <div className="navbar-end">
           {user ? (
