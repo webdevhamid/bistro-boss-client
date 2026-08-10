@@ -11,8 +11,10 @@ import { IoMdMenu } from "react-icons/io";
 import { TbStars } from "react-icons/tb";
 import { NavLink, Outlet } from "react-router";
 import "./DashboardLayout.css";
+import useCart from "../hooks/useCart";
 
 const DashboardLayout = () => {
+  const [cart] = useCart();
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Dashboard Left sidebar */}
@@ -60,7 +62,7 @@ const DashboardLayout = () => {
               <span>
                 <FaShoppingCart className="text-2xl" />
               </span>
-              <span>My Cart</span>
+              <span>My Cart ({cart.length})</span>
             </NavLink>
           </li>
           <li>
