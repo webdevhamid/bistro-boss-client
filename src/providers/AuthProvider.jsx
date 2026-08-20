@@ -13,12 +13,14 @@ import {
 } from "firebase/auth";
 
 import { app } from "../firebase/firebase.config";
+import useAxiosPublic from "./../hooks/useAxiosPublic";
 
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   // External Providers
   const googleProvider = new GoogleAuthProvider();
@@ -60,9 +62,30 @@ const AuthProvider = ({ children }) => {
   // Current User Observer
   useEffect(() => {
     // Register the observer
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       // Set the current user
       setUser(currentUser);
+
+      if (currentUser) {
+        // do something
+        // TODO: Get the token and store it in the client
+        const userInfo = { email: currentUser.email };
+        const {
+          // Destructuring token property from the "data" object
+          data: { token },
+        } = await axiosPublic.post("/jwt", userInfo);
+
+        // Set the token at the localstorage
+        localStorage.setItem("access-token", token);
+        console.log("Token successfully added!");
+        console.log(token);
+      } else {
+        // if the current user doesn't exist
+        // TODO: remove the token (local storage, caching, in memory, server-side)
+        localStorage.removeItem("access-token");
+        console.log("Token removed successfully!");
+      }
+
       // Set the loading state to 'False'
       setLoading(false);
 

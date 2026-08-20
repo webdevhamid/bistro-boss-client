@@ -22,7 +22,7 @@ const Testimonials = () => {
     axios.get("reviews.json").then((res) => setReviews(res.data));
   }, []);
 
-  console.log(reviews);
+  // console.log(reviews);
 
   return (
     <div className="py-20">

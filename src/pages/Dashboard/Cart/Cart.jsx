@@ -38,15 +38,19 @@ const Cart = () => {
 
   return (
     <div>
-      {/* Subtitle */}
+      {/* Section Title */}
       <SectionTitle heading={"Wanna add more?"} subHeading={"My cart"} />
 
       <div className="bg-white p-10">
         {/* Cart management */}
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl uppercase font-semibold">Total Orders: {cart.length}</h1>
-          <h1 className="text-2xl uppercase font-semibold">Total Price: ${totalPrice}</h1>
-          <button className="btn bg-secondary-500 text-white">Pay</button>
+          <h1 className="text-2xl uppercase">
+            Total Orders: <span className="font-semibold">{cart.length}</span>
+          </h1>
+          <h1 className="text-2xl uppercase">
+            Total Price: <span className="font-semibold">${totalPrice}</span>
+          </h1>
+          <button className="btn bg-secondary-500 text-white w-[100px]">Pay</button>
         </div>
 
         {/* Cart Table */}
@@ -83,7 +87,7 @@ const Cart = () => {
                       onClick={() => handleDelete(item._id)}
                       className="btn bg-red-500 inline-flex items-center justify-center p-3 hover:bg-red-600 transition"
                     >
-                      <FaTrashAlt className="text-white text-2xl" />
+                      <FaTrashAlt className="text-white text-xl" />
                     </button>
                   </td>
                 </tr>

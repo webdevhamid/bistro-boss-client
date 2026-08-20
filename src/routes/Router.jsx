@@ -16,6 +16,12 @@ import UserHome from "./../pages/Dashboard/UserHome/UserHome";
 import PaymentHistory from "./../pages/Dashboard/PaymentHistory/PaymentHistory";
 import AddReview from "./../pages/Dashboard/AddReview/AddReview";
 import MyBookings from "./../pages/Dashboard/MyBookings/MyBookings";
+import AllUsers from "./../pages/Dashboard/AllUsers/AllUsers";
+import ManageItems from "./../pages/Dashboard/ManageItems/ManageItems";
+import AddItems from "./../pages/Dashboard/AddItems/AddItems";
+import AdminHome from "./../pages/Dashboard/AdminHome/AdminHome";
+import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
+import AdminRoute from "./AdminRoute";
 
 const DashboardRoute = () => {
   return (
@@ -79,6 +85,36 @@ const router = createBrowserRouter([
       {
         path: "myBookings",
         Component: MyBookings,
+      },
+      {
+        // element: (
+        //   <AdminRoute>
+        //     <AllUsers />
+        //   </AdminRoute>
+        // ),
+        Component: AdminRoute,
+        children: [
+          {
+            path: "allUsers",
+            Component: AllUsers,
+          },
+          {
+            path: "manageBookings",
+            Component: ManageBookings,
+          },
+          {
+            path: "manageItems",
+            Component: ManageItems,
+          },
+          {
+            path: "addItems",
+            Component: AddItems,
+          },
+          {
+            path: "adminHome",
+            Component: AdminHome,
+          },
+        ],
       },
     ],
   },
