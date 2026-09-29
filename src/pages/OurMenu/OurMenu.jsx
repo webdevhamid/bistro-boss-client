@@ -11,11 +11,11 @@ import imgSoup from "../../assets/menu/soup-bg.jpg";
 const OurMenu = () => {
   const [menu] = useMenu();
 
-  const offered = menu.filter((item) => item.category === "offered");
-  const pizzas = menu.filter((item) => item.category === "pizza");
-  const desserts = menu.filter((item) => item.category === "dessert");
-  const soups = menu.filter((item) => item.category === "soup");
-  const salads = menu.filter((item) => item.category === "salad");
+  const offered = menu?.filter((item) => item.category === "offered");
+  const pizzas = menu?.filter((item) => item.category === "pizza");
+  const desserts = menu?.filter((item) => item.category === "dessert");
+  const soups = menu?.filter((item) => item.category === "soup");
+  const salads = menu?.filter((item) => item.category === "salad");
 
   return (
     <div>

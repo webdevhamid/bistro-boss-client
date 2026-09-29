@@ -21,7 +21,7 @@ const MenuCategory = ({ heading, subHeading, sectionTitle, items, category }) =>
 
       {/* Menu section */}
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
-        {items.map((item) => (
+        {items?.map((item) => (
           <MenuItem key={item._id} item={item} />
         ))}
       </div>

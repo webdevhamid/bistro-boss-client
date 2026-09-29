@@ -8,10 +8,11 @@ import RecommendedMenu from "../../components/RecommendedMenu/RecommendedMenu";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import useMenu from "../../hooks/useMenu";
 import imgChef from "../../assets/home/chef-service.jpg";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Home = () => {
-  const [menu] = useMenu();
-  const offered = menu.filter((item) => item.category === "offered");
+  const [menu, loading, error] = useMenu();
+  const offered = menu?.filter((item) => item.category === "offered");
 
   return (
     <div>
@@ -22,12 +23,17 @@ const Home = () => {
       {/* Featured Title */}
       <FeaturedTitle heading={"Bistro Boss"} bgCover={imgChef} />
       {/* Popular Menu */}
-      <MenuCategory
-        heading={"From our menu"}
-        subHeading={"Check it out"}
-        items={offered}
-        category={"offered"}
-      />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <MenuCategory
+          heading={"From our menu"}
+          subHeading={"Check it out"}
+          items={offered}
+          category={"offered"}
+        />
+      )}
+
       {/* Call Us */}
       <CallUs />
       {/* Recommend Menu */}

@@ -3,17 +3,10 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
-import toast from "react-hot-toast";
-import { useEffect } from "react";
 
 const AllUsers = () => {
   const axiosSecureInstance = useAxiosSecure();
-  const {
-    data: users = [],
-    isPending,
-    error,
-    refetch,
-  } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const { data } = await axiosSecureInstance.get("/users");
@@ -83,13 +76,13 @@ const AllUsers = () => {
       {/* Main Block */}
       <div className="bg-white p-10 rounded-lg">
         {/* Display total users */}
-        <h2 className="text-3xl">
+        <h2 className="text-3xl font-semibold">
           Total Users: <span className="font-semibold">{users.length}</span>
         </h2>
 
         {/* Users Table */}
         <div className="overflow-x-auto rounded-box border-base-content/5 bg-base-100 mt-5">
-          <table className="table">
+          <table className="table table-zebra">
             {/* head */}
             <thead className="bg-secondary-500 text-white">
               <tr>
@@ -104,8 +97,11 @@ const AllUsers = () => {
               {/* User Info */}
               {users?.map((user, i) => (
                 <tr key={user._id}>
+                  {/* User Serial */}
                   <th>{i + 1}</th>
+                  {/* User Name */}
                   <td>{user?.name}</td>
+                  {/* User Email */}
                   <td>{user?.email}</td>
                   {/* User Role button */}
                   <td>

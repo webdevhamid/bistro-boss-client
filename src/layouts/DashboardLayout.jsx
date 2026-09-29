@@ -12,20 +12,29 @@ import {
 import { MdEmail } from "react-icons/md";
 import { IoMdMenu } from "react-icons/io";
 import { TbStars } from "react-icons/tb";
-import { NavLink, Outlet } from "react-router";
+import { Navigate, NavLink, Outlet, replace, useNavigate } from "react-router";
 import "./DashboardLayout.css";
 import useCart from "../hooks/useCart";
 import { useState } from "react";
 import { ImSpoonKnife } from "react-icons/im";
 import useAdmin from "../hooks/useAdmin";
+import { FiLogOut } from "react-icons/fi";
+import useAuth from "../hooks/useAuth";
 
 const DashboardLayout = () => {
   const [cart] = useCart();
-  // TODO: get isAdmin value from the database
+  const { logoutUser } = useAuth();
+  const navigate = useNavigate();
+  // get isAdmin value
   // let isAdmin = true;
   const [isAdmin] = useAdmin();
 
-  console.log(isAdmin);
+  // Handle Logout
+  const handleLogout = () => {
+    logoutUser().then(() => {
+      navigate("/", { state: null, replace: true });
+    });
+  };
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -212,11 +221,28 @@ const DashboardLayout = () => {
               <span>Contact</span>
             </NavLink>
           </li>
+
+          {/* Divider */}
+          <div className="w-56">
+            <div className="divider before:h-px! after:h-px! before:bg-white after:bg-white"></div>
+          </div>
+          {/* Logout Button */}
+          <li>
+            <button
+              className="flex items-center gap-2 text-md hover:text-white bg-transparent transition cursor-pointer"
+              onClick={handleLogout}
+            >
+              <span>
+                <FiLogOut className="text-2xl" />
+              </span>
+              <span>Logout</span>
+            </button>
+          </li>
         </ul>
       </div>
       {/* Dashboard Right content  */}
-      <div className="flex-1 bg-[#f8f8f8] h-screen overflow-y-scroll">
-        <div className="container mx-auto p-8">
+      <div className="flex-1 bg-gray h-screen overflow-y-scroll">
+        <div className="container max-w-7xl mx-auto p-8">
           <Outlet />
         </div>
       </div>

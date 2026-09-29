@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         // do something
-        // TODO: Get the token and store it in the client
+        // Get the token and store it in the client
         const userInfo = { email: currentUser.email };
         const {
           // Destructuring token property from the "data" object
@@ -78,10 +78,9 @@ const AuthProvider = ({ children }) => {
         // Set the token at the localstorage
         localStorage.setItem("access-token", token);
         console.log("Token successfully added!");
-        console.log(token);
       } else {
         // if the current user doesn't exist
-        // TODO: remove the token (local storage, caching, in memory, server-side)
+        // remove the token (local storage, caching, in memory, server-side)
         localStorage.removeItem("access-token");
         console.log("Token removed successfully!");
       }

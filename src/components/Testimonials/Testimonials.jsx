@@ -22,8 +22,6 @@ const Testimonials = () => {
     axios.get("reviews.json").then((res) => setReviews(res.data));
   }, []);
 
-  // console.log(reviews);
-
   return (
     <div className="py-20">
       <SectionTitle heading={"Testimonials"} subHeading={"What our clients say"} />

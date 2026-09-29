@@ -4,13 +4,12 @@ import { AuthContext } from "../providers/AuthContext";
 
 const AuthLayout = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.pathname ? location.state?.pathname : "/";
 
   if (user) {
-    return <Navigate to={from} replace />;
+    return <Navigate to={from} replace={true} />;
   }
 
   return (
@@ -18,7 +17,7 @@ const AuthLayout = () => {
       <div className="container mx-auto">
         <Outlet />
       </div>
-    </div>         
+    </div>
   );
 };
 

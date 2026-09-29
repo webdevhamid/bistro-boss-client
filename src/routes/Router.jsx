@@ -95,6 +95,7 @@ const router = createBrowserRouter([
         Component: AdminRoute,
         children: [
           {
+            // index: true,
             path: "allUsers",
             Component: AllUsers,
           },

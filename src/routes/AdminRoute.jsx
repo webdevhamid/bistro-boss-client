@@ -5,6 +5,7 @@ const AdminRoute = () => {
   const [isAdmin, isAdminLoading] = useAdmin();
 
   if (isAdminLoading) {
+    // Loader
     return (
       <div className="min-h-screen flex items-center justify-center">
         <span className="loading loading-spinner loading-xl text-amber-500"></span>

@@ -1,0 +1,14 @@
+form input,
+textarea,
+select {
+  outline: 0;
+}
+form input:focus,
+textarea:focus,
+select:focus {
+  border: 2px solid rgb(236, 156, 7);
+}
+label {
+font-weight: bold;
+font-size: 14px;
+}

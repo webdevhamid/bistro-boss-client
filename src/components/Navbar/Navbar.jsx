@@ -25,7 +25,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to={"/dashboard"} className={`hover:text-[#eea000] bg-transparent transition`}>
+        <NavLink to={`/dashboard`} className={`hover:text-[#eea000] bg-transparent transition`}>
           Dashboard
         </NavLink>
       </li>

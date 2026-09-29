@@ -28,11 +28,11 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const { email, password, captcha } = data;
-      console.log(email, password, captcha);
+      // console.log(email, password, captcha);
 
       // sing-in user
       const { user } = await signInUser(email, password);
-      console.log(user);
+      // console.log(user);
       if (user !== null) {
         toast.success("Logged in successfully!");
 

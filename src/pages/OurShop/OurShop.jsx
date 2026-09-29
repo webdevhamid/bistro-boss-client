@@ -9,23 +9,28 @@ import "react-tabs/style/react-tabs.css";
 import { useState } from "react";
 
 const OurShop = () => {
-  const [menu] = useMenu();
+  const [menu, error, loading] = useMenu();
   const { category } = useParams();
-  const categories = ["salads", "pizzas", "soups", "desserts", "drinks"];
+  const categories = ["salads", "pizzas", "soups", "desserts", "drinks", "offered"];
   const initialTabIndex = categories.indexOf(category);
   const [tabIndex, setTabIndex] = useState(initialTabIndex);
   console.log(initialTabIndex);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   // const [defaultIndex, setDefaultIndex] = useState(0);
   // const { category } = useParams();
   // const categories = ["salads", "pizzas", "soups", "desserts", "drinks"];
   // const initialIndex = categories.indexOf(category);
 
-  const salads = menu.filter((item) => item.category === "salad");
-  const drinks = menu.filter((item) => item.category === "drinks");
-  const pizzas = menu.filter((item) => item.category === "pizza");
-  const desserts = menu.filter((item) => item.category === "dessert");
-  const soups = menu.filter((item) => item.category === "soup");
+  const salads = menu?.filter((item) => item.category === "salad");
+  const drinks = menu?.filter((item) => item.category === "drinks");
+  const pizzas = menu?.filter((item) => item.category === "pizza");
+  const desserts = menu?.filter((item) => item.category === "dessert");
+  const soups = menu?.filter((item) => item.category === "soup");
+  const offered = menu?.filter((item) => item.category === "offered");
 
   return (
     <div>
@@ -41,6 +46,7 @@ const OurShop = () => {
           <Tab>Soup</Tab>
           <Tab>Dessert</Tab>
           <Tab>Drinks</Tab>
+          <Tab>Offered</Tab>
         </TabList>
 
         <TabPanel>
@@ -57,6 +63,9 @@ const OurShop = () => {
         </TabPanel>
         <TabPanel>
           <OrderTab items={drinks} />
+        </TabPanel>
+        <TabPanel>
+          <OrderTab items={offered} />
         </TabPanel>
       </Tabs>
     </div>
