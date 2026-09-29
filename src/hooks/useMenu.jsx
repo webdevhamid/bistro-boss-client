@@ -8,9 +8,9 @@ const useMenu = () => {
   const axiosPublic = useAxiosPublic();
 
   const {
-    data: menu,
-    error,
+    data: menu = [],
     isPending: loading,
+    refetch,
   } = useQuery({
     queryKey: ["menu"],
     queryFn: async () => {
@@ -28,7 +28,7 @@ const useMenu = () => {
   //     });
   // }, []);
   // Return menu and loading state
-  return [menu, loading, error];
+  return [menu, loading, refetch];
 };
 
 export default useMenu;

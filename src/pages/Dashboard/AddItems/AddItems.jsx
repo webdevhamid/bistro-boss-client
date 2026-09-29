@@ -5,12 +5,16 @@ import { FaUtensils } from "react-icons/fa";
 import useAxiosPublic from "./../../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Spinner from "../../../components/Spinner/Spinner";
+import { useState } from "react";
 
 // ImgBB API Keys
 const imageHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const imageHostingURL = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const AddItems = () => {
+  const [loading, setLoading] = useState(false);
+
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const {
@@ -22,6 +26,7 @@ const AddItems = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
+    setLoading(true);
     // Destructured input names from data object
     const { recipeName, category, price, recipeDetails, image } = data;
 
@@ -57,6 +62,7 @@ const AddItems = () => {
           timer: 1500,
         });
         reset();
+        setLoading(false);
       }
     }
   };
@@ -67,7 +73,13 @@ const AddItems = () => {
       {/* Add Item Form */}
 
       {/* Form */}
-      <div className="bg-base-300 w-full shrink-0 rounded p-4">
+      <div className="bg-base-300 w-full shrink-0 rounded p-4 relative">
+        {/* Spinner */}
+        {loading && (
+          <div className="absolute left-1/2 transform -translate-1/2 top-1/2">
+            <Spinner />
+          </div>
+        )}
         <div className="card-body">
           <form
             className="fieldset lg:grid-cols-2 grid-cols-1 gap-5"
