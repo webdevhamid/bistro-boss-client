@@ -22,6 +22,8 @@ import AddItems from "./../pages/Dashboard/AddItems/AddItems";
 import AdminHome from "./../pages/Dashboard/AdminHome/AdminHome";
 import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings";
 import AdminRoute from "./AdminRoute";
+import { axiosPublicInstance } from "../hooks/useAxiosPublic";
+import UpdateItem from "./../pages/Dashboard/UpdateItem/UpdateItem";
 
 const DashboardRoute = () => {
   return (
@@ -106,6 +108,14 @@ const router = createBrowserRouter([
           {
             path: "manageItems",
             Component: ManageItems,
+          },
+          {
+            path: "updateItem/:itemId",
+            Component: UpdateItem,
+            loader: async ({ params }) => {
+              const { data } = await axiosPublicInstance.get(`menu/${params.itemId}`);
+              return data;
+            },
           },
           {
             path: "addItems",

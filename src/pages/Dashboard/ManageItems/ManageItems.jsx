@@ -5,6 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router";
 
 const ManageItems = () => {
   const [menu, loading, refetch] = useMenu();
@@ -81,14 +82,15 @@ const ManageItems = () => {
                   <td>{item?.name}</td>
                   {/* Item Price */}
                   <td>${item?.price}</td>
-                  {/* item Edit button */}
+                  {/* item update button */}
                   <td>
-                    <button
+                    <Link
+                      to={`/dashboard/updateItem/${item?._id}`}
                       onClick={() => handleUpdateItem(item?._id)}
                       className="btn bg-secondary-500 text-white"
                     >
                       <FaRegEdit className="text-xl" />
-                    </button>
+                    </Link>
                   </td>
                   {/* Item Delete button */}
                   <td>

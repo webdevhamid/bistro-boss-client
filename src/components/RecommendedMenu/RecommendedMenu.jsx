@@ -17,7 +17,7 @@ const RecommendedMenu = () => {
         {/* Heading */}
         <SectionTitle heading={'Chef Recommends'} subHeading={'Should Try'}/>
      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-         {menu.map((item) => (
+         {menu?.map((item) => (
         <RecommendedItem key={item._id} item={item} />
       ))}
      </div>

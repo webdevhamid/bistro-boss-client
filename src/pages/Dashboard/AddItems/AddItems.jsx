@@ -31,7 +31,7 @@ const AddItems = () => {
     const { recipeName, category, price, recipeDetails, image } = data;
 
     // Image upload to ImgBB and then get an URL
-    const imageFile = { image: image["0"] };
+    const imageFile = { image: image[0] };
     const res = await axiosPublic.post(imageHostingURL, imageFile, {
       // Required for image upload
       headers: {
